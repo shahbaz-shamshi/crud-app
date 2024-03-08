@@ -14,10 +14,6 @@ function Create() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(e);
-
-    console.log("clicked");
-
     const header = { "Access-Control-Allow-Origin": "*" };
     axios.post("https://65e7f94f53d564627a8f9288.mockapi.io/crud", {
       name: name,
@@ -67,13 +63,17 @@ function Create() {
             <br />
             <br />
           </div>
-          <Link to="/read">
-          <button 
-           onClick={handleSubmit}
-           className="btn btn-primary">Submit
-            
-            </button>
-          </Link>
+          <div className="buttonClass">
+            <Link to="/">
+              <button onClick={handleSubmit} className="btn btn-secondary">
+                Submit
+              </button>
+            </Link>
+
+            <Link to="/read">
+              <button className="btn btn-primary">Data</button>
+            </Link>
+          </div>
         </form>
       </div>
     </>

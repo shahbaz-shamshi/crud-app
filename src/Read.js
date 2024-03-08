@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
-import './App.css';
+import "./App.css";
 
 const Read = () => {
   const [data, setData] = useState([]);
@@ -43,7 +42,7 @@ const Read = () => {
         />
       </div>
       <div className="d-flex justify-content-between m-2">
-        <h2>Read Operation</h2>
+        <h2>Data</h2>
         <Link to="/">
           <button className="btn btn-secondary">Create</button>
         </Link>
@@ -51,10 +50,11 @@ const Read = () => {
       <table className={`table ${tabledark}`}>
         <thead>
           <tr>
-            
+            <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-           
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         {data.map((eachData) => {
@@ -77,7 +77,7 @@ const Read = () => {
                           )
                         }
                       >
-                        Edit{" "}
+                        Update{" "}
                       </button>
                     </Link>
                   </td>
