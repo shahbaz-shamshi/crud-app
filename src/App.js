@@ -2,7 +2,7 @@
 
 import Create from "./Create";
 import Read from "./Read";
-// import Update from './Update';
+ import Update from './Update';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -15,8 +15,8 @@ function App() {
             <Route exact path="/" element={<Create />} />
             <Route exact path="/read" element={<Read />} />
 
-            {/* <Route exact path="/read" element={<Update/>}> */}
-            {/* </Route> */}
+            <Route exact path="/update" element={<Update/>}>
+           </Route>
           </Routes>
         </BrowserRouter>
       </div>

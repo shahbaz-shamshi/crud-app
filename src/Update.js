@@ -45,6 +45,7 @@ const Update = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+        <div className="buttonClass">
         <button
           type="submit"
           className="btn btn-primary mx-2"
@@ -55,6 +56,8 @@ const Update = () => {
         <Link to="/read">
           <button className="btn btn-secondary mx-2"> Back </button>
         </Link>
+
+        </div>
       </form>
     </>
   );
