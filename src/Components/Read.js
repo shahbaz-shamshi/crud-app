@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+// import UpdateIcon from "@mui/icons-material/Update";
 
 import "./App.css";
 
@@ -21,14 +24,17 @@ const Read = () => {
         getData();
       });
   }
-  const setToLocalStorage = (id, name, email) => {
+  const setToLocalStorage = (id, name, email, passsword, file) => {
     localStorage.setItem("id", id);
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
+    localStorage.setItem("password", passsword);
+    localStorage.setItem("file", file);
   };
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <>
       <div className="form-check form-switch">
@@ -42,19 +48,28 @@ const Read = () => {
         />
       </div>
       <div className="d-flex justify-content-between m-2">
-        <h2>Data</h2>
+        <h2 className="font">Data</h2>
         <Link to="/">
-          <button className="btn btn-secondary">Create</button>
+          <Button variant="contained" href="#contained-buttons">
+            Create
+          </Button>
         </Link>
       </div>
       <table className={`table ${tabledark}`}>
         <thead>
-          <tr>
+          <tr className="head">
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Password</th>
             <th scope="col"></th>
+            <th scope="col">Files</th>
+            
             <th scope="col"></th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+
+            
           </tr>
         </thead>
         {data.map((eachData) => {
@@ -65,29 +80,37 @@ const Read = () => {
                   <th scope="row">{eachData.id}</th>
                   <td>{eachData.name}</td>
                   <td>{eachData.email}</td>
+                  <td>{eachData.password}</td>
+                  <td></td>
+                  <td>{eachData.file}</td>
+                  
+                  <td></td>
                   <td>
                     <Link to="/update">
-                      <button
-                        className="btn-success"
+                      <Button
+                        variant="contained"
                         onClick={() =>
                           setToLocalStorage(
                             eachData.id,
                             eachData.name,
-                            eachData.email
+                            eachData.email,
+                            eachData.passsword,
+                            eachData.file
                           )
                         }
                       >
-                        Update{" "}
-                      </button>
+                        Update
+                      </Button>
                     </Link>
                   </td>
                   <td>
-                    <button
-                      className="btn-danger"
+                    <Button
+                      variant="outlined"
+                      startIcon={<DeleteIcon />}
                       onClick={() => handleDelete(eachData.id)}
                     >
                       Delete
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               </tbody>

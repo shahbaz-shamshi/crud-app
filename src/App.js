@@ -1,8 +1,8 @@
 // import './App.css';
 
-import Create from "./Create";
-import Read from "./Read";
- import Update from './Update';
+import Create from "./Components/Create"
+import Read from "./Components/Read";
+ import Update from './Components/Update';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

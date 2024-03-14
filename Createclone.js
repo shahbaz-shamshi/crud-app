@@ -11,6 +11,20 @@ function Create() {
 
   var [email, setEmail] = useState("");
 
+  const [isValid, setIsValid] = useState(false);
+
+  var [password, setPassword] = useState("");
+  var [file, setFile] = useState("");
+
+
+  const validateEmail = (email) => {
+    // Regular expression for basic email validation
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  };
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -18,6 +32,9 @@ function Create() {
     axios.post("https://65e7f94f53d564627a8f9288.mockapi.io/crud", {
       name: name,
       email: email,
+      password: password,
+      file: file,
+
       header,
     });
   };
@@ -27,8 +44,34 @@ function Create() {
   }
 
   function newEmailData(event) {
-    setEmail(event.target.value);
+
+     const value=event.target.value;
+
+     setEmail(value);
+    setIsValid(validateEmail(value));
+
+
+
+     
+
+
+
+
+
+  
+
+
   }
+
+  function newPasswordData(event) {
+    setPassword(event.target.value);
+  }
+
+  function newFileData(event) {
+    setFile(event.target.value);
+  }
+
+
 
   return (
     <>
@@ -58,14 +101,55 @@ function Create() {
               id="email"
               name="email"
               onChange={newEmailData}
+              
+              required
+            />
+
+{isValid ? (
+        <p style={{ color: 'green' }}>Valid email address</p>
+      ) : (
+        <p style={{ color: 'red' }}>Invalid email address</p>
+      )}
+            <br />
+            <br />
+          </div>
+
+
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+            Password:
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={newPasswordData}
               required
             />
             <br />
             <br />
           </div>
+
+
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              file upload:
+            </label>
+            <input
+              type="file"
+              id="file"
+              name="file"
+              onChange={newFileData}
+              required
+            />
+            <br />
+            <br />
+          </div>
+
+
           <div className="buttonClass">
             <Link to="/">
-              <button onClick={handleSubmit} className="btn btn-secondary">
+              <button disabled={!isValid} onClick={handleSubmit} className="btn btn-secondary">
                 Submit
               </button>
             </Link>
@@ -80,4 +164,4 @@ function Create() {
   );
 }
 
-export default Create;
+export default Createclone;

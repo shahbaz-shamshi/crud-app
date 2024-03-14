@@ -1,15 +1,28 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+
+  display: flex;
+  justify-content: center;
+  
 }
 
 form {
-  background-color: #ffffff;
+  background-color: rgba(108, 84, 84, 0.128);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   max-width: 400px;
-  margin: 0 auto;
+  margin: 10px;
+  border-radius:30px;
+}
+form:hover{
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+}
+
+form:focus-within{
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+  outline:none;
 }
 
 
@@ -49,5 +62,45 @@ tbody.th{
 
 display: flex;
 justify-content: center;
+
+}
+
+.table{
+
+  border:1px solid #4475a6;
+  width: 113%;
+   
+}
+
+.font{
+
+  color: #047cf5;
+}
+
+.head{
+
+
+  color:  #7b8a9a;
+}
+
+
+#password{
+
+
+  
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.fileClass{
+
+border-radius: 2px;
+width:172px;
+ 
+
 
 }
