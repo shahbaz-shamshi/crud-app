@@ -14,6 +14,7 @@ const Update = () => {
     setEmail(localStorage.getItem("email"));
     setPassword(localStorage.getItem("password"));
     setFile(localStorage.getItem("file"));
+    
   }, []);
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -29,10 +30,6 @@ const Update = () => {
         navigate("/read");
       });
   };
-
-  
-
-
 
   return (
     <>
@@ -78,9 +75,6 @@ const Update = () => {
             onChange={(e) => setFile(e.target.value)}
           />
         </div>
-
-
-
 
 
         <div className="buttonClass">
