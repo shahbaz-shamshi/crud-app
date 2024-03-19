@@ -3,72 +3,79 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Login() {
-  var [name, setName] = useState("");
   var [email, setEmail] = useState("");
   var [password, setPassword] = useState("");
 
-  function newNameData(event) {
-    console.log(event.target.value);
-    setName(event.target.value);
-  }
-
   function newEmailData(event) {
-    console.log(event.target.value);
     setEmail(event.target.value);
   }
 
   function newPasswordData(event) {
-    console.log(event.target.value);
     setPassword(event.target.value);
   }
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(e);
 
     console.log("submited");
+try{
+    // const header = { "Access-Control-Allow-Origin": "*" };
+    // axios.post("https://65e7f94f53d564627a8f9288.mockapi.io/crud", {
+    //   email: email,
+    //   password: password,
+    //   header,
+    // });
 
-
-    const header = { "Access-Control-Allow-Origin": "*" };
-    axios.post("https://65e7f94f53d564627a8f9288.mockapi.io/crud", {
-      name: name,
+    axios.post('/login', {
       email: email,
-      password: password,
-      header,
-    });
+      password: password
+  })
+
+  console.log(email);
+
+   
 
 
-e.target.reset();
+
+    const response = await axios.get(
+   "https://65e7f94f53d564627a8f9288.mockapi.io/crud"
+    );
 
 
+    const users = response.data;
+    const usersPassword = response.data[users.length].password;
+    console.log(usersPassword);
+    
+    const usersEmail = response.data[users.length].email;
+    console.log(usersEmail);
+    
+   
 
+    e.target.reset();
+
+  }
+
+  catch (error) {
+    console.error("Error:", error);
+  }
   };
+
+
+
+  
+
+
+
+
 
   return (
     <form onSubmit={handleSubmit}>
-
       <div className="header">
-      <h2>Login</h2>
-
-      <Link to="/read">
-              <button className="button"> Data</button>
-              </Link>
-
-       </div>
+        <h2>Login</h2>
+      </div>
 
       <div className="control-row">
-        <div className="control no-margin">
-          <label htmlFor="email">Name</label>
-          <input
-            id="Name"
-            type="text"
-            name="name"
-            required=""
-            onChange={newNameData}
-          />
-        </div>
-
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
           <input
@@ -82,25 +89,28 @@ e.target.reset();
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password"  required=""
-            onChange={newPasswordData}/>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            required=""
+            onChange={newPasswordData}
+          />
         </div>
       </div>
 
       <p className="form-actions button-design">
-      <button type="reset" className="button button-flat"> Reset</button>
-       
-        <button type ="submit" className="button">Login</button>
-
-        
-            
-
+        <button type="submit" className="button">
+          Login
+        </button>
+        <Link to="/Create">
+          <button type="submit" className="button">
+            Sign up
+          </button>
+        </Link>
       </p>
     </form>
   );
 }
 
 export default Login;
-
-
-
